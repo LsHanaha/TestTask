@@ -1,0 +1,75 @@
+
+version: "3.7"
+
+services:
+  db:
+    restart: always
+    container_name: pg_alar
+    image: postgres:latest
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+    env_file:
+      - .env
+
+  json-server1:
+    image: williamyeh/json-server
+    container_name: json_server_alar1
+    env_file:
+      - .env
+    ports:
+      - "${JSON_SERVER1_PORT}:3000"
+    volumes:
+      - ./data1:/data
+    command: -p 3000 -w db.json
+    restart: always
+
+
+  json-server2:
+    image: williamyeh/json-server
+    container_name: json_server_alar2
+    env_file:
+      - .env
+    ports:
+      - "${JSON_SERVER2_PORT}:3000"
+    volumes:
+      - ./data2:/data
+    command: -p 3000 -w db.json
+    restart: always
+
+
+  backend:
+    build: .
+    container_name: backend_alar
+    ports:
+      - "8888:8888"
+    restart: always
+    volumes:
+      - ./app/:/Alar/app
+    links:
+      - db:db
+      - json-server1:json-server1
+      - json-server2:json-server2
+    env_file:
+      - .env
+
+    command: python3 start.py
+    depends_on:
+      - db
+      - json-server2
+      - json-server1
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "188:188"
+    volumes:
+      - ./alar_front/build:/usr/src/app/static/
+    links:
+      - backend:backend
+    depends_on:
+      - backend

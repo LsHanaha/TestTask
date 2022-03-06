@@ -1,0 +1,123 @@
+.main {
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    height: calc(100vh - 5rem);
+}
+
+.helpMessage {
+    text-align: center;
+    font-size: 2rem;
+    height: 4rem;
+    padding-top: 1.5rem;
+}
+
+.loginForm {
+    margin-top: 5vh;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.users {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 100vw;
+}
+
+.list {
+    height: 80%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userMods {
+    height: 80%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userRowHeader {
+    display: flex;
+    width: 90%;
+    height: 3rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid gray;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.userRow {
+    display: flex;
+    width: 90%;
+    border-bottom: 2px solid gray;
+    height: 3rem;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.editButton {
+    color: brown;
+    cursor: pointer;
+}
+
+
+.removeButton {
+    color: red;
+    cursor: pointer;
+}
+
+.formName {
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 3rem;
+}
+
+.form {
+    width: 60rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.formRow {
+    width: 60%;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.label {
+    font-size: 1.5rem;
+    width: 10rem;
+}
+
+.input {
+    width: 15rem;
+    height: 2rem;
+    padding-left: 10px;
+}
+
+.errorMsg {
+    height: 2rem;
+    font-size: 1.5rem;
+    color: red;
+    width: 100%;
+    text-align: center;
+}
